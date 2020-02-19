@@ -1,0 +1,21 @@
+train_img_dir: '~/dataset/my_hand_dataset/imgs/train'
+train_keypoints_dir: '~/dataset/my_hand_dataset/keypoints_21joint/train'
+annotation_config: 'config/annotation/21pts.yml'
+meta_architecture: 'SingleStageNet'
+extractor: 'vgg16'
+extractor_freeze: True
+extract_layers: ['conv3_3']
+# [`kernel size`, `output channels`, `padding`, `activ`]
+# `activ` means activate function. r: relu, s: sigmoid.
+estimator: [[
+            [3, 256, 1, 'r'], [3, 128, 1, 'r'],
+            [3, 128, 1, 'r'], [3, 128, 1, 'r'], [3, 128, 1, 'r'],
+            [1, 512, 0, 'r'], [1, 21, 0, 's'],]]
+loss: 'WeightedMAE'
+loss_w0: 0.01
+loss_w1: 1
+optimizer: 'SGD'
+lr: 0.001  # learning rate
+bs: 8  # batch size
+epoch: 500
+step_save_model: 100  # unit is epoch

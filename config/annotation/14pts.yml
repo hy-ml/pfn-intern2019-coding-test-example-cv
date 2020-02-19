@@ -1,0 +1,11 @@
+img_dir: 'sample/img'
+save_dir: 'sample/csv_14pts'
+n_keypoints: 14
+palm: [0, 1, 2]
+thumb: [3, 4, 5]
+pointer_finger: [6, 7]
+middle_finger: [8, 9]
+ring_finger: [10 ,11]
+little_finger: [12, 13]
+guide_img: './annotator/guide/14pts.png'
+guide_keypoints: './annotator/guide/14pts.csv'

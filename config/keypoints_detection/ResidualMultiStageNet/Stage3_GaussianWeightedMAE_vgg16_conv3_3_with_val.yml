@@ -1,0 +1,33 @@
+train_img_dir: '~/dataset/my_hand_dataset/imgs/train'
+train_keypoints_dir: '~/dataset/my_hand_dataset/keypoints_21joint/train'
+val_img_dir: '~/dataset/my_hand_dataset/imgs/val'
+val_keypoints_dir: '~/dataset/my_hand_dataset/keypoints_21joint/val'
+annotation_config: 'config/annotation/21pts.yml'
+meta_architecture: 'ResidualStage3Net'
+extractor: 'vgg16'
+extractor_freeze: False
+extract_layers: ['conv3_3']
+# [`kernel size`, `output channels`, `padding`, `activ`]
+# `activ` means activate function. r: relu, s: sigmoid, n: None.
+estimator: [
+            # Stage 1
+            [[3, 128, 1, 'r'], [3, 128, 1, 'r'], [3, 128, 1, 'r'],
+             [3, 128, 1, 'r'], [3, 128, 1, 'r'],
+             [1, 512, 0, 'r'], [1, 21, 0, 's']],
+            # Stage 2
+            [[7, 256, 3, 'r'], [7, 128, 3, 'r'], [7, 128, 3, 'r'],
+             [7, 128, 3, 'r'], [7, 128, 3, 'r'],
+             [1, 512, 0, 'r'], [1, 21, 0, 'sr']],
+            # Stage 3
+            [[7, 256, 3, 'r'], [7, 128, 3, 'r'], [7, 128, 3, 'r'],
+             [7, 128, 3, 'r'], [7, 128, 3, 'r'],
+             [1, 512, 0, 'r'], [1, 21, 0, 'sr']],
+           ]
+loss: 'GaussianWeightedMAE'
+loss_w0: 0.01
+loss_w1: 10
+optimizer: 'SGD'
+lr: 0.01  # learning rate
+bs: 16  # batch size
+epoch: 500
+step_save_model: 5  # unit is epoch
