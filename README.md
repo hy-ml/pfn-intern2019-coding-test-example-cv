@@ -3,7 +3,7 @@
 PFN2019夏季インターン選考のコーディング課題の実装例です．
 課題はComputer Visionになります．
 
-[課題へのリンク]("https://github.com/pfnet/intern-coding-tasks/blob/master/2019/chainer_computer_vision/README-ja.pdf")
+[課題へのリンク](https://github.com/pfnet/intern-coding-tasks/blob/master/2019/chainer_computer_vision/README-ja.pdf)
 
 当時はChainerに慣れていなかったこともあり，修正したい箇所がたくさんあります．
 しかし，選考時に提出したものをそのまま公開する方がためになると考え，あえて修正せずに公開しています．
